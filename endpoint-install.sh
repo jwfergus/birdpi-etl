@@ -1,23 +1,7 @@
 #!/bin/bash
 
-#TODO
-#   Connect all function parameters
 
 SQLITE_DB_PATH = "/home/BirdNET-Pi/scripts/birds.db"
-#Gets needed prompts from user:
-#   BIRDPI_PASSWORD1    - password for etl user we're creating
-#   DEVICE_NAME         - device name that will be recorded in database when reporting bird detections
-#   AZURE_DB_SERVER     - Azure SQL DB servername
-#   AZURE_DB_NAME       - Azure SQL DB name
-#   AZURE_DB_USERNAME   - Azure SQL DB username for ETL
-#   AZURE_DB_PASSWORD1  - Azure SQL DB password
-prompt_user
-
-create_user_account "$BIRDPI_PASSWORD1"
-
-install_python_requirements
-
-create_config_files "$AZURE_DB_SERVER" "$AZURE_DB_NAME" "$SQLITE_DB_PATH" "$DEVICE_NAME" 
 
 
 
@@ -151,4 +135,21 @@ function create_config_files() {
     # Confirm that the cron job was set up correctly
     crontab -l
 }
+
+
+
+#Gets needed prompts from user:
+#   BIRDPI_PASSWORD1    - password for etl user we're creating
+#   DEVICE_NAME         - device name that will be recorded in database when reporting bird detections
+#   AZURE_DB_SERVER     - Azure SQL DB servername
+#   AZURE_DB_NAME       - Azure SQL DB name
+#   AZURE_DB_USERNAME   - Azure SQL DB username for ETL
+#   AZURE_DB_PASSWORD1  - Azure SQL DB password
+prompt_user
+
+create_user_account "$BIRDPI_PASSWORD1"
+
+install_python_requirements
+
+create_config_files "$AZURE_DB_SERVER" "$AZURE_DB_NAME" "$SQLITE_DB_PATH" "$DEVICE_NAME" 
 
